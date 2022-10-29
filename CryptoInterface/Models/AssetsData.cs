@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CryptoInterface.Models
 {
-    public class Currency
+    public class AssetsData
     {
+        public Asset[] Assets { get; set; }
     }
 }
