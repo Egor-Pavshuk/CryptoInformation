@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptoInformation
+namespace CryptoInformation.Views
 {
-    public partial class MainWindow : Window
+    public partial class Search : Page
     {
-        public MainWindow()
+        public Search()
         {
             InitializeComponent();
         }

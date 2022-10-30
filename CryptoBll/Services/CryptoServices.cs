@@ -36,7 +36,7 @@ namespace CryptoBll.Services
             return null;
         }
 
-        public async Task<List<Asset>?> SearchById(string id)
+        public async Task<List<Asset>?> SearchByAssetId(string assetId)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace CryptoBll.Services
                         if (!string.IsNullOrEmpty(json))
                         {
                             var assets = Newtonsoft.Json.JsonConvert.DeserializeObject<AssetsData>(json);
-                            var result = assets.Data.Where(a => a.Id.Contains(id.ToLower()));
+                            var result = assets.Data.Where(a => a.Id.Contains(assetId.ToLower()));
                             if (result != null)
                             {
                                 return (List<Asset>?)result;
