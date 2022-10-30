@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CryptoInterface.Models
 {
-    public class AssetsData
+    public class AssetsMarketData
     {
-        public Asset[] Data { get; set; }
+        public AssetMarket[] Data { get; set; }
     }
 }
