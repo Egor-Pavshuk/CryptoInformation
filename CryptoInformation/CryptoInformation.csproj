@@ -17,6 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CryptoBll\CryptoBll.csproj" />
     <ProjectReference Include="..\CryptoInterface\CryptoInterface.csproj" />
   </ItemGroup>
 

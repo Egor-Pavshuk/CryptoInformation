@@ -14,25 +14,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CryptoInformation.Views;
+using CryptoInformation.ViewModels;
 
 namespace CryptoInformation
 {
     public partial class MainWindow : Window
     {
-        private ICryptoServices ?_cryptoServices;
-        public MainWindow(ICryptoServices cryptoServices)
-        {
-            _cryptoServices = cryptoServices;
-            InitializeComponent();
-        }
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new Search();
         }
     }
 }
