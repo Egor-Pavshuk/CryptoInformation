@@ -9,32 +9,53 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using CryptoBll.Services;
+using CryptoInformation.ViewModels.Commands;
+using System.Windows.Controls;
+using CryptoInformation.Views.Pages;
+using CryptoInformation.Views;
 
 namespace CryptoInformation.ViewModels
 {
-    internal class MainWindowViewModel : ViewModelBase
+    internal class MainWindowViewModel : ViewModelBase //todo DI
     {
         /// <summary>
         /// Window title
         /// </summary>
         private readonly string _title;
-        private List<Asset> _assets;
-        public string Title { get => _title; }
-        public MainWindowViewModel()
-        {
-            _title = "Crypto information";
-            GetAssets().Wait();            
-        }
-        public List<Asset> Assets { get => _assets; }
+        //private List<Asset> _assets;        
+        private Page _currentPage;
 
-        private async Task GetAssets()
+        public Page CurrentPage { get => _currentPage; }
+        public string Title { get => _title; }
+
+        public MainWindowViewModel()
+         {
+            _title = "Crypto information";
+            //_assets = new List<Asset>();
+            //GetAssets().Wait();
+
+            _currentPage = new MainPage();
+        }
+        //public List<Asset> Assets { get => _assets; }
+
+        //private async Task GetAssets()
+        //{
+        //    CryptoServices cryptoServices = new();
+        //    var result = await cryptoServices.GetAssets().ConfigureAwait(false);
+        //    if (result != null)
+        //    {
+        //        _assets = result.Data.Take(10).ToList();
+        //    }
+        //}
+
+        public ICommand ConverterCommand_Click
         {
-            CryptoServices cryptoServices = new CryptoServices();
-            var result = await cryptoServices.GetAssets().ConfigureAwait(false);
-            if (result != null)
+            get
             {
-                _assets = result.Data.Take(10).ToList();
+                return new CryptoCommand((o) => _currentPage = new ConverterPage());
             }
         }
+
+        //private void ChangePage()
     }
 }
