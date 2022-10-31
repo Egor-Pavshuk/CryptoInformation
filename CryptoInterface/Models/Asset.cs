@@ -16,7 +16,15 @@ namespace CryptoInterface.Models
         public string axSupply { get; set; }
         public string MarketCapUsd { get; set; }
         public string VolumeUsd24Hr { get; set; }
-        public string PriceUsd { get; set; }
+        private string _priceUsd;
+        public string PriceUsd {
+            get => _priceUsd; 
+            set
+            {
+                var price = Convert.ToDouble(value.Replace('.', ','));
+                _priceUsd = string.Format("{0:N3} $", price);
+            }
+        }
         public string ChangePercent24Hr { get; set; }
         public string Vwap24Hr { get; set; }
     }

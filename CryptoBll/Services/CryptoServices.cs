@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CryptoBll.Services
 {
-    internal class CryptoServices
+    public class CryptoServices //todo
     {
         public async Task<AssetsData?> GetAssets()
         {
@@ -17,7 +17,7 @@ namespace CryptoBll.Services
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await client.GetAsync("https://api.coincap.io/v2/assets"))
+                    using (HttpResponseMessage response = await client.GetAsync("https://api.coincap.io/v2/assets").ConfigureAwait(false))
                     {
                         string json = await response.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(json))
