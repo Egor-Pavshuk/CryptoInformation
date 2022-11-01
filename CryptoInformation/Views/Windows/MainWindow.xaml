@@ -14,8 +14,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            
+            <RowDefinition Height="390"></RowDefinition>
         </Grid.RowDefinitions>
         <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -69,10 +68,13 @@
             <Button x:Name="Search" Content="Search" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10" Command="{Binding ConverterCommandClick}"/>
             <Button x:Name="Converter" Content="Convert" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10" Command="{Binding ConverterCommandClick}"/>
         </StackPanel>
+
         <Frame x:Name="MainFrame" Content="{Binding CurrentPage}" Grid.Row="1" NavigationUIVisibility="Hidden">
             
         </Frame>
         
     </Grid>
+    
+
 
 </Window>

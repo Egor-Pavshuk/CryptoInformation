@@ -22,41 +22,45 @@ namespace CryptoInformation.ViewModels
         /// <summary>
         /// Window title
         /// </summary>
-        private readonly string _title;
+        private string _title;
         private Page _currentPage;
+        private Dictionary<string, Page> _pages;
 
-       // public ViewModelBase CurrentView { get => _currentView; }
-        public Page CurrentPage { get => _currentPage; }
-        public string Title { get => _title; }
+        public Page CurrentPage { get => _currentPage; set { Set(ref _currentPage, value); } }
+        public string Title { get => _title; set { Set(ref _title, value); } }
 
         public MainWindowViewModel()
-         {
+        {
             _title = "Crypto information";
-            _currentPage = new MainPage();
+            
+            _pages = new Dictionary<string, Page>();
+            _pages.Add("Converter", new ConverterPage());
+            _pages.Add("Main", new MainPage());
+            _pages.Add("Search", new Search());
+            _pages.Add("MoreDetails", new MoreDetails());
+
+            _currentPage = _pages["Main"];
 
             ConverterCommandClick = new RelayCommand(OnConverterCommandClickExecuted, CanConverterCommandClickExecute);
         }
 
+        #region Commands 
         public ICommand ConverterCommandClick
         {
             get;
         }
 
-        private void OnConverterCommandClickExecuted(object o) 
+        private void OnConverterCommandClickExecuted(object o)
         {
-            _currentPage = new ConverterPage();
+            Title = "Converter";
+            CurrentPage = _pages["Converter"];
         }
 
         private bool CanConverterCommandClickExecute(object o)
         {
             return true;
         }
-
-        private void ChangePage()
-        {
-            _currentPage = new ConverterPage();
-           // _currentView = new ConverterViewModel();
-        }
+        #endregion
 
     }
 }

@@ -17,9 +17,9 @@ namespace CryptoInformation.ViewModels
     {
         private readonly string _title;
         private List<Asset> _assets;
-        private Page _currentPage;
+       // private Page _currentPage;
 
-        public Page CurrentPage { get => _currentPage; }
+       // public Page CurrentPage { get => _currentPage; }
         public string Title { get => _title; }
 
         public MainPageViewModel()
