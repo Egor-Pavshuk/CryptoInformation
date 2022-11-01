@@ -9,6 +9,10 @@ namespace CryptoInformation.ViewModels
 {
     internal class ConverterViewModel : ViewModelBase
     {
+        public ConverterViewModel()
+        {
+
+        }
 
     }
 }

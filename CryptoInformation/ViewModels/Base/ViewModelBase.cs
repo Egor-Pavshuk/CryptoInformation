@@ -15,5 +15,11 @@ namespace CryptoInformation.ViewModels.Base
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+        protected virtual void Set<T> (ref T member, T value, [CallerMemberName] string propertyName = "")
+        {
+            if (Equals(member, value)) return;
+            member = value;
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

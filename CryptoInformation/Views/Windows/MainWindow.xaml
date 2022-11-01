@@ -3,14 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:vm="clr-namespace:CryptoInformation.ViewModels"
+        xmlns:vm="clr-namespace:CryptoInformation.ViewModels" 
         mc:Ignorable="d"
         Title="{Binding Title}" MaxHeight="525" Height="400" MaxWidth="700">
 
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
-    
 
     <Grid>
         <Grid.RowDefinitions>
@@ -67,10 +66,10 @@
             </ListBox.ItemTemplate>
         </ListBox>-->
         <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top" Height="70" Background="LightBlue">
-            <Button x:Name="Search" Content="Search" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10"/>
-            <Button x:Name="Converter" Content="Convert" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10" Command="{Binding ConverterCommand_Click}"/>
+            <Button x:Name="Search" Content="Search" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10" Command="{Binding ConverterCommandClick}"/>
+            <Button x:Name="Converter" Content="Convert" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10" Command="{Binding ConverterCommandClick}"/>
         </StackPanel>
-        <Frame Content="{Binding CurrentPage}" Grid.Row="1">
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage}" Grid.Row="1" NavigationUIVisibility="Hidden">
             
         </Frame>
         

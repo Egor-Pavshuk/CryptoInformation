@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CryptoInformation.ViewModels
 {
@@ -41,15 +42,6 @@ namespace CryptoInformation.ViewModels
             }
         }
 
-        public ICommand ConverterCommandClick
-        {
-            get
-            {
-                return new CryptoCommand((o) => _currentPage = new ConverterPage());
-            }
-        }
-
-        //private void ChangePage()
     }
 }
 

@@ -13,6 +13,7 @@ using CryptoInformation.ViewModels.Commands;
 using System.Windows.Controls;
 using CryptoInformation.Views.Pages;
 using CryptoInformation.Views;
+using System.Windows.Input;
 
 namespace CryptoInformation.ViewModels
 {
@@ -22,40 +23,40 @@ namespace CryptoInformation.ViewModels
         /// Window title
         /// </summary>
         private readonly string _title;
-        //private List<Asset> _assets;        
         private Page _currentPage;
 
+       // public ViewModelBase CurrentView { get => _currentView; }
         public Page CurrentPage { get => _currentPage; }
         public string Title { get => _title; }
 
         public MainWindowViewModel()
          {
             _title = "Crypto information";
-            //_assets = new List<Asset>();
-            //GetAssets().Wait();
-
             _currentPage = new MainPage();
+
+            ConverterCommandClick = new RelayCommand(OnConverterCommandClickExecuted, CanConverterCommandClickExecute);
         }
-        //public List<Asset> Assets { get => _assets; }
 
-        //private async Task GetAssets()
-        //{
-        //    CryptoServices cryptoServices = new();
-        //    var result = await cryptoServices.GetAssets().ConfigureAwait(false);
-        //    if (result != null)
-        //    {
-        //        _assets = result.Data.Take(10).ToList();
-        //    }
-        //}
-
-        public ICommand ConverterCommand_Click
+        public ICommand ConverterCommandClick
         {
-            get
-            {
-                return new CryptoCommand((o) => _currentPage = new ConverterPage());
-            }
+            get;
         }
 
-        //private void ChangePage()
+        private void OnConverterCommandClickExecuted(object o) 
+        {
+            _currentPage = new ConverterPage();
+        }
+
+        private bool CanConverterCommandClickExecute(object o)
+        {
+            return true;
+        }
+
+        private void ChangePage()
+        {
+            _currentPage = new ConverterPage();
+           // _currentView = new ConverterViewModel();
+        }
+
     }
 }
