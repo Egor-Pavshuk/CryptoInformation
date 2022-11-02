@@ -13,11 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptoInformation
+namespace CryptoInformation.Views.Pages
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for MoreDetails.xaml
+    /// </summary>
+    public partial class MoreDetails : Page
     {
-        public MainWindow()
+        public MoreDetails()
         {
             InitializeComponent();
         }

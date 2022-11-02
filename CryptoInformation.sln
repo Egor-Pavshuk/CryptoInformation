@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoInformation", "CryptoInformation\CryptoInformation.csproj", "{FAF62B58-295D-4C11-BF67-78F5FA173B54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoInformation", "CryptoInformation\CryptoInformation.csproj", "{FAF62B58-295D-4C11-BF67-78F5FA173B54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoInterface", "CryptoInterface\CryptoInterface.csproj", "{82A9898C-C3FB-4B44-BED1-E6A84925415C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoInterface", "CryptoInterface\CryptoInterface.csproj", "{82A9898C-C3FB-4B44-BED1-E6A84925415C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoBll", "CryptoBll\CryptoBll.csproj", "{4875CE84-F5A6-4169-B27E-2BD3F7F5A363}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoBll", "CryptoBll\CryptoBll.csproj", "{4875CE84-F5A6-4169-B27E-2BD3F7F5A363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API Test", "API Test\API Test.csproj", "{FEF0E880-F452-4B08-AE45-367260472B82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{4875CE84-F5A6-4169-B27E-2BD3F7F5A363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4875CE84-F5A6-4169-B27E-2BD3F7F5A363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4875CE84-F5A6-4169-B27E-2BD3F7F5A363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF0E880-F452-4B08-AE45-367260472B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF0E880-F452-4B08-AE45-367260472B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF0E880-F452-4B08-AE45-367260472B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF0E880-F452-4B08-AE45-367260472B82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
