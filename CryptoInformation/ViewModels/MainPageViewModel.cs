@@ -15,20 +15,17 @@ namespace CryptoInformation.ViewModels
 {
     internal class MainPageViewModel : ViewModelBase
     {
-        private readonly string _title;
+        private bool _isDetailsVisible = false;
         private List<Asset> _assets;
-       // private Page _currentPage;
-
-       // public Page CurrentPage { get => _currentPage; }
-        public string Title { get => _title; }
-
+        public bool IsDetailsVisible { get => _isDetailsVisible; set
+            {
+                Set(ref _isDetailsVisible, value);
+            } }
         public MainPageViewModel()
         {
-            _title = "Crypto information";
             _assets = new List<Asset>();
             GetAssets().Wait();
-
-            //_currentPage = new MainPage();
+            MoreDetailsCommandClick = new RelayCommand(OnMoreDetailsCommandClickExecuted, CanMoreDetailsCommandClickExecute);
         }
         public List<Asset> Assets { get => _assets; }
 
@@ -41,6 +38,22 @@ namespace CryptoInformation.ViewModels
                 _assets = result.Data.Take(10).ToList();
             }
         }
+
+        public ICommand MoreDetailsCommandClick
+        {
+            get;
+        }
+
+        private void OnMoreDetailsCommandClickExecuted(object o)
+        {
+            IsDetailsVisible = true;
+        }
+
+        private bool CanMoreDetailsCommandClickExecute(object o)
+        {
+            return true;
+        }
+
 
     }
 }

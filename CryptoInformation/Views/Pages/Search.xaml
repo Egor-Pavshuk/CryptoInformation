@@ -3,30 +3,47 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CryptoInformation.Views"
+      xmlns:local="clr-namespace:CryptoInformation.Views" 
+      xmlns:vm="clr-namespace:CryptoInformation.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Search">
 
+    <Page.DataContext>
+        <vm:SearchPageViewModel />
+    </Page.DataContext>
+    
     <Grid Background="LightYellow">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="105"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" Height="70" Background="LightBlue">
-            <Button x:Name="Search1" Content="Search" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10"/>
-            <Button x:Name="Search2" Content="Search" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10"/>
-        </StackPanel>
-        <StackPanel x:Name="ContentStack" Grid.Row="1" Background="LightYellow">
-            <TextBox Name="SearchText" Height="25" Width="200" Margin="28,26,30,10" ></TextBox>
-            <Button x:Name = "SearchButton" Content="Search" Height="25" Width="60" />
-        </StackPanel>
 
-        <StackPanel x:Name="ResultStack" Grid.Row="2" Background="LightYellow">
-            <TextBox Name="SearchText1" Height="25" Width="200" Margin="28,26,30,10" ></TextBox>
-            <Button x:Name = "SearchButton1" Content="Search" Height="25" Width="60" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="ResultStack" Grid.Row="0" Background="LightYellow">
+            <TextBlock Text="Search" FontSize="50" HorizontalAlignment="Center"></TextBlock>
+            <TextBox Name="SearchText" Text="{Binding SearchRequest, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="200" Margin="28,10,30,20" ></TextBox>
         </StackPanel>
+        
+        <ListBox Grid.Row="1" Grid.ColumnSpan="4" HorizontalContentAlignment="Stretch" ItemsSource="{Binding SimilarAssets, UpdateSourceTrigger=PropertyChanged}" Background="WhiteSmoke">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <UniformGrid Columns="4" Background="LightGreen" Width="650">
+                        <UniformGrid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="8"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </UniformGrid.Resources>
+
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Symbol}"/>
+                        <TextBlock Text="{Binding PriceUsd }"/>
+                        <Button x:Name="More" Content="More" Width="100" Command=""/>
+                    </UniformGrid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Page>

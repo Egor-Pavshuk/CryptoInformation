@@ -13,7 +13,7 @@
     </Page.DataContext>
 
 
-    <Grid>
+    <Grid Background="LightSteelBlue">
         <Grid.RowDefinitions>
             <!--<RowDefinition Height="auto"></RowDefinition>-->
             <RowDefinition Height="auto"></RowDefinition>
@@ -25,20 +25,6 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!--<StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top" Height="70" Background="LightBlue">
-            <Button x:Name="Search" Content="Search" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10"/>
-            <Button x:Name="Converter" Content="Convert" Width="120" Height="50" BorderThickness="2" HorizontalAlignment="Left" Margin="10,10,10,10" Command="{Binding ConverterCommandClick}"/>
-        </StackPanel>-->
-
-        <!--<ItemsControl Grid.ColumnSpan="4">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel>
-                        <TextBlock Text="Name"></TextBlock>
-                    </StackPanel>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>-->
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top" Height="30" >
             <TextBlock Text="Name" Grid.Column="0" TextAlignment="Center" Margin="80,5,115,10"/>
@@ -48,7 +34,7 @@
         </StackPanel>
 
 
-        <ListBox Grid.Row="2" Grid.ColumnSpan="4" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Assets}" >
+        <ListBox Grid.Row="2" Grid.ColumnSpan="4" HorizontalContentAlignment="Stretch" ItemsSource="{Binding Assets}" Background="WhiteSmoke">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <UniformGrid Columns="4" Background="LightGreen" Width="650">
@@ -61,8 +47,18 @@
 
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text="{Binding Symbol}"/>
-                        <TextBlock Text="{Binding PriceUsd }"/>
-                        <Button x:Name="More" Content="More" Width="100"/>
+                        <TextBlock Text="{Binding PriceUsd}"/>
+                        <Button x:Name="More" Content="More" Width="100" Height="25" Command="{Binding }"/>
+                        <!--<StackPanel Visibility="{Binding }" Margin="0,0,-128,0">
+                            <TextBlock Text="{Binding VolumeUsd24Hr}" HorizontalAlignment="Left" Height="20" Margin="10,10,10,10"><Run Text="Volume 24 Hr ="/></TextBlock>
+                            <TextBlock Text="{Binding ChangePercent24Hr}" HorizontalAlignment="Left" Margin="10,10,10,10" Height="20"><Run Text="Change percent 24 Hr ="/></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Visibility="{Binding }" Margin="186,0,-300,0">
+                            <TextBlock Text="{Binding ChangePercent24Hr}" Height="20"><Run Text="Change percent 24 Hr ="/></TextBlock>
+                            <TextBlock Text="{Binding VolumeUsd24Hr}" Height="20"><Run Text="Volume 24 Hr ="/></TextBlock>
+                        </StackPanel>-->
+
                     </UniformGrid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -21,5 +21,6 @@ namespace CryptoInformation.ViewModels.Base
             member = value;
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

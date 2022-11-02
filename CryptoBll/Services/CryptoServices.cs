@@ -68,7 +68,7 @@ namespace CryptoBll.Services
 
         public double ConvertAssets(Asset fromAsset, Asset toAsset, double count)
         {
-            var result = Convert.ToDouble(fromAsset.PriceUsd.Replace('.', ',')) / (double)Convert.ToDouble(toAsset.PriceUsd.Replace('.', ',')) * count;
+            var result = Convert.ToDouble(fromAsset.PriceUsd.Replace('$', ' ')) / (double)Convert.ToDouble(toAsset.PriceUsd.Replace('$', ' ')) * count;
             return result;
         }
 

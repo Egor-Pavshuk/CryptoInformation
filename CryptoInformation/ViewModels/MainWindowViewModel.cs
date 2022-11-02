@@ -42,6 +42,7 @@ namespace CryptoInformation.ViewModels
             _currentPage = _pages["Main"];
 
             ConverterCommandClick = new RelayCommand(OnConverterCommandClickExecuted, CanConverterCommandClickExecute);
+            SearchCommandClick = new RelayCommand(OnSearchCommandClickExecuted, CanSearchCommandClickExecute);
         }
 
         #region Commands 
@@ -57,6 +58,22 @@ namespace CryptoInformation.ViewModels
         }
 
         private bool CanConverterCommandClickExecute(object o)
+        {
+            return true;
+        }
+
+        public ICommand SearchCommandClick
+        {
+            get;
+        }
+
+        private void OnSearchCommandClickExecuted(object o)
+        {
+            Title = "Search";
+            CurrentPage = _pages["Search"];
+        }
+
+        private bool CanSearchCommandClickExecute(object o)
         {
             return true;
         }
