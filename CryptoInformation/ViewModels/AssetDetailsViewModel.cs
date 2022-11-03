@@ -15,7 +15,8 @@ namespace CryptoInformation.ViewModels
 {
     internal class AssetDetailsViewModel : ViewModelBase
     {
-        private bool _isDetailsVisible;
+        private double _height;
+        private string _isDetailsVisible = "Hidden";
         private List<AssetMarket> _markets;
         public string Id { get; set; }
         public string Name { get; set; }
@@ -23,7 +24,7 @@ namespace CryptoInformation.ViewModels
         public string VolumeUsd24Hr { get; set; }
         public string ChangePercent24Hr { get; set; }
         public string PriceUsd { get; set; }
-        public bool IsDetailsVisible { get => _isDetailsVisible; set
+        public string IsDetailsVisible { get => _isDetailsVisible; set
             {
                 Set(ref _isDetailsVisible, value);
             } }
@@ -32,7 +33,10 @@ namespace CryptoInformation.ViewModels
             { 
                 Set(ref _markets, value);
             } }
-
+        public double Heigth { get => _height; set
+            {
+                Set(ref _height, value);
+            } }
         public AssetDetailsViewModel()
         {
             _markets = new List<AssetMarket>();
@@ -45,13 +49,14 @@ namespace CryptoInformation.ViewModels
 
         private void OnMoreDetailsCommandClickExecuted(object assetId)
         {
-            if (IsDetailsVisible)
+            if (IsDetailsVisible == "Visible")
             {
-                IsDetailsVisible = false;
+                IsDetailsVisible = "Hidden";
+                Heigth = 80;
                 return;
             }
-
-            IsDetailsVisible = true;
+            Heigth = 200;
+            IsDetailsVisible = "Visible";
             Markets = new CryptoServices().GetAssetsMarketsByAssetId((string)assetId).Result.Data.ToList();
 
         }

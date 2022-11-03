@@ -47,7 +47,7 @@ namespace CryptoInformation.ViewModels
             }
 
 
-            MoreDetailsCommandClick = new RelayCommand(OnMoreDetailsCommandClickExecuted, CanMoreDetailsCommandClickExecute);
+            //MoreDetailsCommandClick = new RelayCommand(OnMoreDetailsCommandClickExecuted, CanMoreDetailsCommandClickExecute);
         }
         public List<Asset> Assets { get => _assets; }
 
@@ -60,24 +60,24 @@ namespace CryptoInformation.ViewModels
             }
         }
 
-        public ICommand MoreDetailsCommandClick
-        {
-            get;
-        }
+        //public ICommand MoreDetailsCommandClick
+        //{
+        //    get;
+        //}
 
-        private void OnMoreDetailsCommandClickExecuted(object assetId)
-        {
-            var asset = AssetDetailsViewModels.Find(a => a.Id == assetId);
-            asset.IsDetailsVisible = true;
-            var markets = _cryptoServices.GetAssetsMarketsByAssetId((string)assetId).Result.Data;
-            asset.Markets = markets.ToList();
+        //private void OnMoreDetailsCommandClickExecuted(object assetId)
+        //{
+        //    var asset = AssetDetailsViewModels.Find(a => a.Id == assetId);
+        //    asset.IsDetailsVisible = true;
+        //    var markets = _cryptoServices.GetAssetsMarketsByAssetId((string)assetId).Result.Data;
+        //    asset.Markets = markets.ToList();
 
-        }
+        //}
 
-        private bool CanMoreDetailsCommandClickExecute(object o)
-        {
-            return true;
-        }
+        //private bool CanMoreDetailsCommandClickExecute(object o)
+        //{
+        //    return true;
+        //}
 
 
     }
