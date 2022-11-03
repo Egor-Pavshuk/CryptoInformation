@@ -15,7 +15,6 @@
 
     <Grid Background="LightSteelBlue">
         <Grid.RowDefinitions>
-            <!--<RowDefinition Height="auto"></RowDefinition>-->
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
@@ -27,9 +26,9 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top" Height="30" >
-            <TextBlock Text="Name" Grid.Column="0" TextAlignment="Center" Margin="80,5,115,10"/>
+            <TextBlock Text="Name" Grid.Column="0" TextAlignment="Center" Margin="30,5,110,10"/>
             <TextBlock Text="Symbol" Grid.Column="1" Margin="10,5,10,10"/>
-            <TextBlock Text="Price USD" Grid.Column="2" Margin="110,5,10,10"/>
+            <TextBlock Text="Price USD" Grid.Column="2" Margin="110,5,40,10"/>
             <TextBlock Text="More details" Margin="90,5,10,10"/>
         </StackPanel>
 
@@ -47,10 +46,10 @@
 
                         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4" Margin="0,0,-488,0" >
 
-                            <TextBlock Text="{Binding Name}" Height="20" Margin="10,10,120,10" VerticalAlignment="Top"/>
-                            <TextBlock Text="{Binding Symbol}" Height="20" Margin="10,10,140,10" VerticalAlignment="Top"/>
-                            <TextBlock Text="{Binding PriceUsd}" Height="20" Margin="10,10,100,10" VerticalAlignment="Top"/>
-                            <Button x:Name="More" Content="More" Width="100" Height="25" Command="{Binding MoreDetailsCommandClick}" CommandParameter="{Binding Id}" Margin="0,10,0,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                            <TextBlock Text="{Binding Name}" Height="20" Width="70" Margin="10,10,55,10" VerticalAlignment="Top"/>
+                            <TextBlock Text="{Binding Symbol}" Height="20" Width="100" Margin="10,10,60,10" VerticalAlignment="Top"/>
+                            <TextBlock Text="{Binding PriceUsd}" Height="20" Width="100" Margin="10,10,80,10" VerticalAlignment="Top"/>
+                            <Button x:Name="More" Content="{Binding ButtonContent, UpdateSourceTrigger=PropertyChanged}" Width="100" Height="25" Command="{Binding MoreDetailsCommandClick}" CommandParameter="{Binding Id}" Margin="0,10,0,0" VerticalAlignment="Top"/>
 
                         </StackPanel>
 

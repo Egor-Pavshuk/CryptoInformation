@@ -10,9 +10,6 @@ namespace CryptoInformation.ViewModels
 {
     internal class MainWindowViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Window title
-        /// </summary>
         private string _title;
         private Page _currentPage;
         private Dictionary<string, Page> _pages;

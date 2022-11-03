@@ -1,21 +1,17 @@
 ﻿using CryptoBll.Services;
 using CryptoInformation.ViewModels.Base;
 using CryptoInformation.ViewModels.Commands;
-using CryptoInformation.Views.Pages;
 using CryptoInterface.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CryptoInformation.ViewModels
 {
     internal class AssetDetailsViewModel : ViewModelBase
     {
-        private double _height;
+        private string _buttonContent = "More";
+        private double _height = 40;
         private string _isDetailsVisible = "Hidden";
         private List<AssetMarket> _markets;
         public string Id { get; set; }
@@ -24,24 +20,42 @@ namespace CryptoInformation.ViewModels
         public string VolumeUsd24Hr { get; set; }
         public string ChangePercent24Hr { get; set; }
         public string PriceUsd { get; set; }
-        public string IsDetailsVisible { get => _isDetailsVisible; set
+        public string IsDetailsVisible
+        {
+            get => _isDetailsVisible; set
             {
                 Set(ref _isDetailsVisible, value);
-            } }
+            }
+        }
 
-        public List<AssetMarket> Markets { get => _markets; set 
-            { 
+        public List<AssetMarket> Markets
+        {
+            get => _markets; set
+            {
                 Set(ref _markets, value);
-            } }
-        public double Heigth { get => _height; set
+            }
+        }
+        public double Heigth
+        {
+            get => _height; set
             {
                 Set(ref _height, value);
-            } }
+            }
+        }
         public AssetDetailsViewModel()
         {
             _markets = new List<AssetMarket>();
             MoreDetailsCommandClick = new RelayCommand(OnMoreDetailsCommandClickExecuted, CanMoreDetailsCommandClickExecute);
         }
+        public string ButtonContent
+        {
+            get => _buttonContent; set
+            {
+                Set(ref _buttonContent, value);
+            }
+        }
+
+        #region Commands
         public ICommand MoreDetailsCommandClick
         {
             get;
@@ -52,19 +66,20 @@ namespace CryptoInformation.ViewModels
             if (IsDetailsVisible == "Visible")
             {
                 IsDetailsVisible = "Hidden";
-                Heigth = 80;
+                Heigth = 40;
+                ButtonContent = "More";
                 return;
             }
             Heigth = 200;
             IsDetailsVisible = "Visible";
             Markets = new CryptoServices().GetAssetsMarketsByAssetId((string)assetId).Result.Data.ToList();
-
+            ButtonContent = "Less";
         }
 
         private bool CanMoreDetailsCommandClickExecute(object o)
         {
             return true;
         }
-
+        #endregion
     }
 }

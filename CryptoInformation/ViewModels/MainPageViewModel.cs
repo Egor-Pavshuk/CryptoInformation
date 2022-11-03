@@ -1,11 +1,9 @@
 ﻿using CryptoBll.Services;
 using CryptoInformation.ViewModels.Base;
-using CryptoInformation.ViewModels.Commands;
 using CryptoInterface.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace CryptoInformation.ViewModels
 {
@@ -41,13 +39,10 @@ namespace CryptoInformation.ViewModels
                     VolumeUsd24Hr = asset.VolumeUsd24Hr,
                     ChangePercent24Hr = asset.ChangePercent24Hr,
                     Symbol = asset.Symbol,
-                    PriceUsd = asset.PriceUsd,
-
+                    PriceUsd = asset.PriceUsd
                 });
             }
 
-
-            //MoreDetailsCommandClick = new RelayCommand(OnMoreDetailsCommandClickExecuted, CanMoreDetailsCommandClickExecute);
         }
         public List<Asset> Assets { get => _assets; }
 
@@ -59,26 +54,6 @@ namespace CryptoInformation.ViewModels
                 _assets = result.Data.Take(10).ToList();
             }
         }
-
-        //public ICommand MoreDetailsCommandClick
-        //{
-        //    get;
-        //}
-
-        //private void OnMoreDetailsCommandClickExecuted(object assetId)
-        //{
-        //    var asset = AssetDetailsViewModels.Find(a => a.Id == assetId);
-        //    asset.IsDetailsVisible = true;
-        //    var markets = _cryptoServices.GetAssetsMarketsByAssetId((string)assetId).Result.Data;
-        //    asset.Markets = markets.ToList();
-
-        //}
-
-        //private bool CanMoreDetailsCommandClickExecute(object o)
-        //{
-        //    return true;
-        //}
-
 
     }
 }
