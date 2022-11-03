@@ -13,9 +13,9 @@ namespace CryptoInformation.ViewModels
     internal class SearchPageViewModel : ViewModelBase
     {
         private List<Asset> _assets;
-        private CryptoServices _cryptoServices;
         private List<Asset>? _similarAssets;
         private string _searchRequest = "";
+        
         public string SearchRequest
         {
             get => _searchRequest;
@@ -36,7 +36,6 @@ namespace CryptoInformation.ViewModels
         }
         public SearchPageViewModel()
         {
-            _cryptoServices = new();
             _assets = new List<Asset>();
             GetAssets().Wait();
             _similarAssets = null;

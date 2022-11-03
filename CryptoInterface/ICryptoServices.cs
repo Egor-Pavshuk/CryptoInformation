@@ -13,6 +13,6 @@ namespace CryptoInterface
         Task<AssetsData?> GetAssets();
         Task<List<Asset>?> SearchByAssetId(string assetId);
         double ConvertAssets(Asset fromAsset, Asset toAsset, double count);
-        Task GetAssetsMarketsByAssetId(string assetId);
+        Task<AssetsMarketData?> GetAssetsMarketsByAssetId(string assetId);
     }
 }

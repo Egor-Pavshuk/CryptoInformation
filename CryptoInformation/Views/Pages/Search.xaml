@@ -16,7 +16,7 @@
     <Grid Background="LightYellow">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition MaxHeight="260"></RowDefinition>
 
         </Grid.RowDefinitions>
 
@@ -24,8 +24,8 @@
             <TextBlock Text="Search" FontSize="50" HorizontalAlignment="Center"></TextBlock>
             <TextBox Name="SearchText" Text="{Binding SearchRequest, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="200" Margin="28,10,30,20" ></TextBox>
         </StackPanel>
-        
-        <ListBox Grid.Row="1" Grid.ColumnSpan="4" HorizontalContentAlignment="Stretch" ItemsSource="{Binding SimilarAssets, UpdateSourceTrigger=PropertyChanged}" Background="WhiteSmoke">
+
+        <ListBox Grid.Row="1" Grid.ColumnSpan="4" Background = "WhiteSmoke" HorizontalContentAlignment="Stretch" ItemsSource="{Binding SimilarAssets, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <UniformGrid Columns="4" Background="LightGreen" Width="650">
