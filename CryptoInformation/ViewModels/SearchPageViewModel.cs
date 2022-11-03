@@ -1,32 +1,30 @@
 ﻿using CryptoBll.Services;
 using CryptoInformation.ViewModels.Base;
 using CryptoInterface.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace CryptoInformation.ViewModels
 {
     internal class SearchPageViewModel : ViewModelBase
     {
         private List<Asset> _assets;
-        private CryptoServices _cryptoServices;
-        private List<Asset>? _similarAssets;
+        private List<AssetDetailsViewModel>? _similarAssets;
         private string _searchRequest = "";
+        private List<AssetDetailsViewModel> _assetDetailsViewModels;
+
         public string SearchRequest
         {
             get => _searchRequest;
             set
             {
                 Set(ref _searchRequest, value);
-                var result = _assets.Where(a => a.Id.Contains(_searchRequest));
+                var result = _assetDetailsViewModels.Where(a => a.Id.Contains(_searchRequest));
                 SimilarAssets = result.ToList();
             }
         }
-        public List<Asset> SimilarAssets
+        public List<AssetDetailsViewModel> SimilarAssets
         {
             get => _similarAssets;
             set
@@ -34,12 +32,34 @@ namespace CryptoInformation.ViewModels
                 Set(ref _similarAssets, value);
             }
         }
+        public List<AssetDetailsViewModel> AssetDetailsViewModels
+        {
+            get => _assetDetailsViewModels;
+            set
+            {
+                Set(ref _assetDetailsViewModels, value);
+            }
+        }
+
         public SearchPageViewModel()
         {
-            _cryptoServices = new();
             _assets = new List<Asset>();
             GetAssets().Wait();
             _similarAssets = null;
+            _assetDetailsViewModels = new List<AssetDetailsViewModel>(_assets.Count);
+
+            foreach (var asset in _assets)
+            {
+                _assetDetailsViewModels.Add(new AssetDetailsViewModel
+                {
+                    Name = asset.Name,
+                    Id = asset.Id,
+                    VolumeUsd24Hr = asset.VolumeUsd24Hr,
+                    ChangePercent24Hr = asset.ChangePercent24Hr,
+                    Symbol = asset.Symbol,
+                    PriceUsd = asset.PriceUsd
+                });
+            }
         }
         private async Task GetAssets()
         {

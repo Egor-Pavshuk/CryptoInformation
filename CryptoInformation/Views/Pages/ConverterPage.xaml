@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CryptoInformation.Views.Pages" 
       xmlns:vm="clr-namespace:CryptoInformation.ViewModels" 
-      d:DataContext="{d:DesignInstance Type=vm:ConverterViewModel}"
+      d:DataContext="{d:DesignInstance Type=vm:ConverterPageViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConverterPage">
@@ -15,7 +15,7 @@
     </Page.DataContext>
 
 
-    <Grid Background="DarkOliveGreen">
+    <Grid Background="LightSlateGray">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="300"></RowDefinition>

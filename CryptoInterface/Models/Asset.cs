@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CryptoInterface.Models
 {
@@ -17,8 +13,9 @@ namespace CryptoInterface.Models
         public string MarketCapUsd { get; set; }
         public string VolumeUsd24Hr { get; set; }
         private string _priceUsd;
-        public string PriceUsd {
-            get => _priceUsd; 
+        public string PriceUsd
+        {
+            get => _priceUsd;
             set
             {
                 var price = Convert.ToDouble(value.Replace('.', ','));

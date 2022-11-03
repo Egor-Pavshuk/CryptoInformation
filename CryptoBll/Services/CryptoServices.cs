@@ -1,15 +1,13 @@
 ﻿using CryptoInterface.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CryptoBll.Services
 {
-    public class CryptoServices //todo
+    public class CryptoServices
     {
         public async Task<AssetsData?> GetAssets()
         {
@@ -28,11 +26,11 @@ namespace CryptoBll.Services
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
             return null;
         }
 
@@ -53,7 +51,7 @@ namespace CryptoBll.Services
                             {
                                 return (List<Asset>?)result;
                             }
-                            
+
                         }
                     }
                 }
@@ -72,19 +70,19 @@ namespace CryptoBll.Services
             return result;
         }
 
-        public async Task GetAssetsMarketsByAssetId(string assetId)
+        public async Task<AssetsMarketData?> GetAssetsMarketsByAssetId(string assetId)
         {
             try
             {
-
-                using (HttpClient client1 = new HttpClient())
+                using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage response = await client1.GetAsync($"https://api.coincap.io/v2/assets/" + assetId + "/markets"))
+                    using (HttpResponseMessage response = await client.GetAsync("https://api.coincap.io/v2/assets/" + assetId + "/markets").ConfigureAwait(false))
                     {
                         string json = await response.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(json))
                         {
                             var assets = Newtonsoft.Json.JsonConvert.DeserializeObject<AssetsMarketData>(json);
+                            return assets;
                         }
                     }
                 }
@@ -93,7 +91,7 @@ namespace CryptoBll.Services
             {
                 Console.WriteLine(ex.Message);
             }
-            return;
+            return null;
         }
     }
 }

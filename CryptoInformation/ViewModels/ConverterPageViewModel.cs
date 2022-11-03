@@ -2,10 +2,8 @@
 using CryptoInformation.ViewModels.Base;
 using CryptoInformation.ViewModels.Commands;
 using CryptoInterface.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -22,20 +20,24 @@ namespace CryptoInformation.ViewModels
         private CryptoServices _cryptoServices;
         public double ConversionResult { get => _conversionResult; set { Set(ref _conversionResult, value); } }
         public List<string> AssetNames { get => _assetNames; }
-        public double Count { get => _count; 
-            set 
+        public double Count
+        {
+            get => _count;
+            set
             {
                 double.Parse(value.ToString().Replace('.', ','));
                 Set(ref _count, value);
                 ConversionResult = _cryptoServices.ConvertAssets(_assets.First(a => a.Symbol == _assetConvertFrom), _assets.First(a => a.Symbol == _assetConvertTo), _count);
             }
         }
-        public string AssetConvertFrom { get => _assetConvertFrom; 
-            set 
+        public string AssetConvertFrom
+        {
+            get => _assetConvertFrom;
+            set
             {
                 Set(ref _assetConvertFrom, value);
                 ConversionResult = _cryptoServices.ConvertAssets(_assets.First(a => a.Symbol == _assetConvertFrom), _assets.First(a => a.Symbol == _assetConvertTo), _count);
-            } 
+            }
         }
 
         public string AssetConvertTo
@@ -53,9 +55,9 @@ namespace CryptoInformation.ViewModels
             _assets = new List<Asset>();
             GetAssets().Wait();
             _assetNames = new List<string>(_assets.Count);
-            foreach(Asset asset in _assets)
+            foreach (Asset asset in _assets)
                 _assetNames.Add(asset.Symbol);
-            _cryptoServices = new ();
+            _cryptoServices = new();
 
             _assetConvertFrom = _assetNames.First();
             _assetConvertTo = _assetNames.First();

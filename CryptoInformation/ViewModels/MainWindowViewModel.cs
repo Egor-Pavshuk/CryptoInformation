@@ -1,27 +1,15 @@
 ﻿using CryptoInformation.ViewModels.Base;
-using CryptoInterface;
-using CryptoInterface.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using CryptoBll.Services;
 using CryptoInformation.ViewModels.Commands;
-using System.Windows.Controls;
-using CryptoInformation.Views.Pages;
 using CryptoInformation.Views;
+using CryptoInformation.Views.Pages;
+using System.Collections.Generic;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CryptoInformation.ViewModels
 {
-    internal class MainWindowViewModel : ViewModelBase //todo DI
+    internal class MainWindowViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Window title
-        /// </summary>
         private string _title;
         private Page _currentPage;
         private Dictionary<string, Page> _pages;
@@ -32,7 +20,7 @@ namespace CryptoInformation.ViewModels
         public MainWindowViewModel()
         {
             _title = "Crypto information";
-            
+
             _pages = new Dictionary<string, Page>();
             _pages.Add("Converter", new ConverterPage());
             _pages.Add("Main", new MainPage());
@@ -41,6 +29,7 @@ namespace CryptoInformation.ViewModels
 
             _currentPage = _pages["Main"];
 
+            MainCommandClick = new RelayCommand(OnMainCommandClickExecuted, CanMainCommandClickExecute);
             ConverterCommandClick = new RelayCommand(OnConverterCommandClickExecuted, CanConverterCommandClickExecute);
             SearchCommandClick = new RelayCommand(OnSearchCommandClickExecuted, CanSearchCommandClickExecute);
         }
@@ -74,6 +63,22 @@ namespace CryptoInformation.ViewModels
         }
 
         private bool CanSearchCommandClickExecute(object o)
+        {
+            return true;
+        }
+
+        public ICommand MainCommandClick
+        {
+            get;
+        }
+
+        private void OnMainCommandClickExecuted(object o)
+        {
+            Title = "Crypto information";
+            CurrentPage = _pages["Main"];
+        }
+
+        private bool CanMainCommandClickExecute(object o)
         {
             return true;
         }
